@@ -27,7 +27,7 @@ public class TextFileLoaderHelper {
 	  public  void read(File file) throws IOException {
 	    Scanner scanner = new Scanner(file);
 	    Stack<Directory> directoryStack = new Stack<>();
-	    Directory root = new Directory(scanner.nextLine(), null); // a root directory for everything
+	    Directory root = new Directory(scanner.nextLine(), null);
 	    directoryStack.add(root);
 	    while (scanner.hasNextLine()) {
 	      processLine(scanner.nextLine(), directoryStack);
@@ -41,11 +41,11 @@ public class TextFileLoaderHelper {
 	    if (nLeadingSpaces == -1) return;
 	    int depth = nLeadingSpaces;
 	    while (directoryStack.size() > depth) {
-	      directoryStack.pop(); // discard elements from the stack when we are deep and jump up one or more levels
+	      directoryStack.pop(); 
 	    }
 	    String dirName = line.substring(nLeadingSpaces);
 	    Directory directory = new Directory(dirName, directoryStack.peek().getName());
-	    directoryStack.peek().getChildren().add(directory); // add the directory to the children of the proper parent dir
+	    directoryStack.peek().getChildren().add(directory);
 	    directoryStack.push(directory);
 	  }
 
