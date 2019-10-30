@@ -11,6 +11,12 @@ import com.netpay.filesystem.search.model.Directory;
 
 import java.util.List;
 
+/**
+ * Repository for Postgres DB
+ * 
+ * @author aruna
+ *
+ */
 @Repository
 public interface SearchRepository extends JpaRepository<Directory, String> {
 

@@ -8,6 +8,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.netpay.filesystem.search.repository.SearchRepository;
 
+/**
+ * Main Controller
+ * 
+ * @author aruna
+ *
+ */
 @RestController
 public class SearchController {
 	@Autowired
@@ -15,7 +21,7 @@ public class SearchController {
 
 	@GetMapping("/directory")
 	public Model getdirectory(@RequestParam(value = "search", required = false) String search, Model model) {
-		model.addAttribute("directories", searchRepository.findByPath(search+"*%"));
+		model.addAttribute("directories", searchRepository.findByPath(search + "*%@"));
 		return model;
 	}
 

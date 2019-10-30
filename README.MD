@@ -1,5 +1,6 @@
 Implementation of Recursive	File	Structure in Spring Boot app
-1) First create the database and a super user manually
+
+1) First create the database and a super user manually in the postgres.
 
 CREATE DATABASE filesystem;
 CREATE USER postgres WITH ENCRYPTED PASSWORD 'admin';

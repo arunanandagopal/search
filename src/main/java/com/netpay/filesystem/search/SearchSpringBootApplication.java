@@ -11,32 +11,35 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.core.io.ResourceLoader;
 
-import com.netpay.filesystem.search.helper.TextFileLoaderHelper;
+import com.netpay.filesystem.search.helper.TextFileLoader;
 
+/**
+ * Main Class, bootstraps and auto configures the Application.
+ * 
+ * @author aruna
+ *
+ */
 @SpringBootApplication
 public class SearchSpringBootApplication {
 
 	@Autowired
 	ResourceLoader resourceLoader;
-	
+
 	@Autowired
-	TextFileLoaderHelper textFileLoaderHelper;
-	
-    private static final Logger log = LoggerFactory.getLogger(SearchSpringBootApplication.class);
+	TextFileLoader textFileLoader;
 
 	public static void main(String[] args) {
 		SpringApplication.run(SearchSpringBootApplication.class, args);
 	}
-	
-	 @PostConstruct
-	    private void init() {
-	        log.info("InitDemoApplication initialization logic ...");
-	        try {
-				textFileLoaderHelper.read(resourceLoader.getResource("classpath:testfile.txt").getFile());
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-	    }
+
+	@PostConstruct
+	private void init() {
+		try {
+			textFileLoader.loadFile(resourceLoader.getResource("classpath:testfile.txt").getFile());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 
 }
