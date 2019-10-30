@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+
+    <title></title>
+
+</head>
+<body>
+<div class="container">
+
+    <h2>Search for Files or Folders</h2>
+    <form th:object="${directory}" th:action="@{/directory}" method="get">
+        <input type="text" name="search" id="search" th:value="${search}"/>
+        <input type="submit" a href="directory" value="Search" />
+    </form>
+</div>
+</body>
+</html>
